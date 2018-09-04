@@ -20,6 +20,6 @@ func Factorialrecursive(arg int) int {
 	if arg <= 1 {
 		return 1
 	} else {
-		return (arg * factorialrecursive(arg-1))
+		return (arg * Factorialrecursive(arg-1))
 	}
 }

@@ -25,7 +25,7 @@ func Fibonaccirecursive(arg int) int {
 		return 1
 	} else {
 
-		return fibonaccirecursive(arg-1) + fibonaccirecursive(arg-2)
+		return Fibonaccirecursive(arg-1) + Fibonaccirecursive(arg-2)
 	}
 
 }
