@@ -23,4 +23,13 @@ func main() {
 
 	// Task 4
 	fmt.Println(zero()(1, 2))
+
+	// Task 5
+	agey := person{age: 10}
+	fmt.Println(agey.age)
+	p := &agey
+	p.addten()
+	fmt.Println(p.age)
+	add10(p)
+	fmt.Println(p.age)
 }

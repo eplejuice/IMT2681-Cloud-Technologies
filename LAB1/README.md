@@ -14,10 +14,10 @@
 6. Write a simple web server, that can handle requests to URLs of the form "/hello/" and responds with string "Hello " where name is the parameter that is provided to the request. Use string tokenizer to extract the last element of the path.
 
 7. Modify the program from point 6 in such a way, that it gracefully handles all possible errors: e.g. calls to
-        /
-        /non-existent-path
-        /hello (without the trailing slash followed by "name"
-        /hello/123  (number instead of a name)
+       * /
+       * /non-existent-path
+       * /hello (without the trailing slash followed by "name"
+       * /hello/123  (number instead of a name)
 
 
 8. Create a in-memory database, that stores books in an array. Books have id, year, title and author. Make a simple service that allows you to retrieve a book by the given id, through API like: /books/  Make sure you return appropriate return code for case where books with given id does not exist.
