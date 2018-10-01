@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"os"
+)
 
 func main() {
-	nLines := githubapi()
 
-	fmt.Println("Number of lines in C++ code: ", nLines)
+	arg1 := os.Args[1]
+	arg2 := os.Args[2]
+	githubapi(arg1, arg2)
+
 }

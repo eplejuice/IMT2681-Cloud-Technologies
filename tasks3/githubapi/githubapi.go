@@ -3,31 +3,47 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 )
 
-const apiRoot = "https://api.github.com/repos/NZDIS/CameraView/languages"
+const apiRoot = "https://api.github.com/repos/"
 
-type returnObj struct {
-	Cplusplus float32 `json:"C++"`
-	Java      float32 `json:"Java"`
-	Shell     float32 `json:"Shell"`
-}
+func githubapi(user string, repo string) {
 
-func githubapi() float32 {
-	resp, err := http.Get(apiRoot)
+	fmt.Println(user)
+	fmt.Println(repo)
+
+	language := "C++"
+	api := apiRoot + user + "/" + repo + "/" + "languages"
+
+	fmt.Println(api)
+
+	resp, err := http.Get(api)
 	if err != nil {
 		fmt.Println("Error", err)
-		return 0
+		panic(err)
 	}
 
-	rObj := &returnObj{}
+	var rObj map[string]float32
 
-	err = json.NewDecoder(resp.Body).Decode(rObj)
+	tmp, _ := ioutil.ReadAll(resp.Body)
+	err = json.Unmarshal(tmp, &rObj)
+
 	if err != nil {
 		fmt.Println("Error", err)
-		return 0
+		panic(err)
 	}
 
-	return rObj.Cplusplus
+	_, tmpp := rObj[language]
+	if !tmpp {
+		fmt.Println("This project is not written in ", language)
+		return
+	}
+
+	for k, v := range rObj {
+		if k == language {
+			fmt.Println(v)
+		}
+	}
 }
